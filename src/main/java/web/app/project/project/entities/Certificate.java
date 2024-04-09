@@ -25,6 +25,10 @@ public class Certificate {
     @Temporal(TemporalType.DATE)
     private Date issuanceDate;
 
+    @Lob
+    private byte[] pdf; // Byte array to store the PDF document
+
+
     public Certificate(Long id, String title, Student student, University university, Date issuanceDate) {
         this.id = id;
         this.title = title;
@@ -85,5 +89,9 @@ public class Certificate {
                 ", university=" + university +
                 ", issuanceDate=" + issuanceDate +
                 '}';
+    }
+
+    public void setPdf(byte[] pdf) {
+        this.pdf = pdf;
     }
 }
