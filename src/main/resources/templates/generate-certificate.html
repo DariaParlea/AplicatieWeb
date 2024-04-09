@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Certificate</title>
+</head>
+<body>
+<h1>Generate Certificate</h1>
+<form th:action="@{/certificates/generate}" method="post">
+  <label for="student">Select Student:</label>
+  <select id="student" name="studentId">
+    <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}">Student Name</option>
+  </select>
+
+  <label for="university">Select University:</label>
+  <select id="university" name="universityId">
+    <option th:each="university : ${universities}" th:value="${university.id}" th:text="${university.name}">University Name</option>
+  </select>
+
+  <button type="submit">Generate Certificate</button>
+</form>
+</body>
+</html>

@@ -1,8 +1,11 @@
 package web.app.project.project.entities;
-import javax.persistence.*;
 import java.util.List;
-
+import jakarta.persistence.*;
+//import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Student {
 
     @Id
@@ -22,6 +25,10 @@ public class Student {
     public Student(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Student(){
+
     }
 
     public Long getId() {
@@ -54,5 +61,15 @@ public class Student {
 
     public void setCertificates(List<Certificate> certificates) {
         this.certificates = certificates;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", university=" + university +
+                ", certificates=" + certificates +
+                '}';
     }
 }

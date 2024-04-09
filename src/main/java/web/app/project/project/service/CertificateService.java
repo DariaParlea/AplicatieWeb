@@ -17,7 +17,6 @@ public class CertificateService {
         this.certificateRepository = certificateRepository;
     }
 
-    // Method to generate a certificate for a student
     public Certificate generateCertificate(Student student, University university) {
         Certificate certificate = new Certificate();
 

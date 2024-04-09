@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+<h1>Welcome to the Home Page</h1>
+<ul>
+  <li><a th:href="@{/students/list}">Students</a></li>
+  <li><a th:href="@{/universities}">Universities</a></li>
+  <li><a th:href="@{/certificates/generate}">Generate Certificate</a></li>
+</ul>
+</body>
+</html>

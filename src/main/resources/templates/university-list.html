@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>University List</title>
+</head>
+<body>
+<h1>University List</h1>
+<ul>
+  <li th:each="university : ${universities}">
+    <a th:href="@{/universities/{id}(id=${university.id})}" th:text="${university.name}"></a>
+    <!-- You can add more details here if needed -->
+  </li>
+</ul>
+</body>
+</html>

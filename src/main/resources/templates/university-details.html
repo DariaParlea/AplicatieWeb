@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>University Details</title>
+</head>
+<body>
+<h1>University Details</h1>
+<div th:if="${university}">
+  <p><strong>ID:</strong> <span th:text="${university.id}"></span></p>
+  <p><strong>Name:</strong> <span th:text="${university.name}"></span></p>
+</div>
+<div th:unless="${university}">
+  <p>University not found.</p>
+</div>
+</body>
+</html>

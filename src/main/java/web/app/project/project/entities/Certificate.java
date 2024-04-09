@@ -1,8 +1,11 @@
 package web.app.project.project.entities;
-import javax.persistence.*;
 import java.util.Date;
-
+import jakarta.persistence.*;
+//import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Certificate {
 
     @Id
@@ -71,5 +74,16 @@ public class Certificate {
 
     public void setUniversity(University university) {
         this.university = university;
+    }
+
+    @Override
+    public String toString() {
+        return "Certificate{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", student=" + student +
+                ", university=" + university +
+                ", issuanceDate=" + issuanceDate +
+                '}';
     }
 }
