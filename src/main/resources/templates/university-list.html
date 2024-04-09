@@ -8,7 +8,7 @@
 <h1>University List</h1>
 <ul>
   <li th:each="university : ${universities}">
-    <a th:href="@{/universities/{id}(id=${university.id})}" th:text="${university.name}"></a>
+    <a th:href="@{/universities/details/{id}(id=${university.id})}" th:text="${university.name}"></a>
     <!-- You can add more details here if needed -->
   </li>
 </ul>

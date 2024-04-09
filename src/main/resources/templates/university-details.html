@@ -9,6 +9,8 @@
 <div th:if="${university}">
   <p><strong>ID:</strong> <span th:text="${university.id}"></span></p>
   <p><strong>Name:</strong> <span th:text="${university.name}"></span></p>
+  <p><strong>Location:</strong> <span th:text="${university.location}"></span></p>
+  <!-- You can add more details here -->
 </div>
 <div th:unless="${university}">
   <p>University not found.</p>

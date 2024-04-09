@@ -32,7 +32,7 @@ public class UniversityController {
     @PostMapping("/create")
     public String createUniversity(@ModelAttribute University university) {
         universityService.saveUniversity(university);
-        return "redirect:/university-list";
+        return "redirect:/universities/all";
     }
 
     @GetMapping("/details/{id}")
