@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Students Main Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("/students_main_bg.jpg"); /* Set the background image */
+      background-size: cover; /* Cover the entire background */
+      background-repeat: no-repeat; /* Do not repeat the background image */
+      background-attachment: fixed; /* Fixed background image */
+    }
+    .sidebar {
+      height: 100%;
+      width: 250px; /* Set the width of the sidebar */
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #f8f9fa; /* Sidebar background color */
+      padding-top: 20px;
+    }
+    .sidebar a {
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+    .sidebar a:hover {
+      background-color: #e9ecef; /* Sidebar link hover color */
+    }
+    .content {
+      margin-left: 250px; /* Adjust content margin to accommodate sidebar */
+      padding: 20px;
+    }
+  </style>
+
+</head>
+<body>
+<div class="sidebar">
+  <h2>Students Options</h2>
+  <ul>
+    <li><a th:href="@{/students/create}">Create Student</a></li>
+    <li><a th:href="@{/students/list}">Get All Students</a></li>
+    <li><a th:href="@{/students/get}">Find Student by ID</a></li>
+    <li><a th:href="@{/students/search}">Find Student by Name</a></li>
+    <li><a th:href="@{/students/delete}">Delete Student</a></li>
+    <li><a th:href="@{/}">Go to Homepage</a></li>
+  </ul>
+</div>
+<div class="content">
+  <!-- Your main content goes here -->
+  <h1>Welcome to the Students Main Page</h1>
+  <p>Choose an option from the sidebar to perform actions on students.</p>
+</div>
+</body>
+</html>

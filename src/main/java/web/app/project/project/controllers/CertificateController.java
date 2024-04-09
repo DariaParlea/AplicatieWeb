@@ -32,12 +32,15 @@ public class CertificateController {
     }
 
     @PostMapping("/generate")
-    public String generateCertificate(@RequestParam Long studentId, @RequestParam Long universityId) {
+    public String generateCertificate(@RequestParam Long studentId,
+                                      @RequestParam Long universityId,
+                                      @RequestParam String title) {
         Student student = studentService.findStudentById(studentId);
         University university = universityService.findUniversityById(universityId);
         if (student != null && university != null) {
-            certificateService.generateCertificate(student, university);
+            certificateService.generateCertificate(student, university, title);
         }
         return "redirect:/certificates/generate";
     }
+
 }

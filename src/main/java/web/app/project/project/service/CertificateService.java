@@ -17,7 +17,7 @@ public class CertificateService {
         this.certificateRepository = certificateRepository;
     }
 
-    public Certificate generateCertificate(Student student, University university) {
+    public Certificate generateCertificate(Student student, University university, String title) {
         Certificate certificate = new Certificate();
 
         certificate.setStudent(student);

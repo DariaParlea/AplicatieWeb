@@ -14,6 +14,7 @@ public class Student {
 
     private String name;
 
+    private String degree;
 
     @ManyToOne
     @JoinColumn(name = "university_id")
@@ -22,9 +23,10 @@ public class Student {
     @OneToMany(mappedBy = "student")
     private List<Certificate> certificates;
 
-    public Student(Long id, String name) {
+    public Student(Long id, String name,String degree) {
         this.id = id;
         this.name = name;
+        this.degree = degree;
     }
 
     public Student(){

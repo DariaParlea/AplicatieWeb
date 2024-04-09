@@ -18,19 +18,19 @@ public class UniversityController {
         this.universityService = universityService;
     }
 
-    @GetMapping("/university-create/create")
+    @GetMapping("/create")
     public String showCreateUniversityForm(Model model) {
         model.addAttribute("university", new University());
         return "university-create";
     }
 
-    @PostMapping("/universities/create")
+    @PostMapping("/create")
     public String createUniversity(@ModelAttribute University university) {
         universityService.saveUniversity(university);
         return "redirect:/universities";
     }
 
-    @GetMapping("/university-details/{id}")
+    @GetMapping("/details/{id}")
     public String showUniversityDetails(@PathVariable Long id, Model model) {
         University university = universityService.findUniversityById(id);
         if (university != null) {
@@ -41,14 +41,14 @@ public class UniversityController {
         }
     }
 
-    @GetMapping("/universities/all")
+    @GetMapping("/all")
     public String getAllUniversities(Model model) {
         List<University> universities = universityService.getAllUniversities();
         model.addAttribute("universities", universities);
         return "university-list"; // Assuming you have a Thymeleaf template named university-list.html
     }
 
-    @DeleteMapping("/universities/edit/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteUniversity(@PathVariable Long id) {
         boolean deleted = universityService.deleteUniversityById(id);
         if (deleted) {
@@ -57,7 +57,7 @@ public class UniversityController {
             return "not-found"; // Or any other appropriate error page
         }
     }
-    @GetMapping("/universities")
+    @GetMapping("/list")
     public String showAllUniversities(Model model) {
         List<University> universities = universityService.getAllUniversities();
         model.addAttribute("universities", universities);

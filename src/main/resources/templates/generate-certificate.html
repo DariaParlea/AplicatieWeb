@@ -17,6 +17,9 @@
     <option th:each="university : ${universities}" th:value="${university.id}" th:text="${university.name}">University Name</option>
   </select>
 
+  <label for="title">Certificate Title:</label>
+  <input type="text" id="title" name="title" placeholder="Enter Certificate Title" required>
+
   <button type="submit">Generate Certificate</button>
 </form>
 </body>

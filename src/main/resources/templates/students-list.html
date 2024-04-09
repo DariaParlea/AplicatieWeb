@@ -1,24 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Students List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student List</title>
 </head>
 <body>
-<h1>List of Students</h1>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>University</th>
-    <!-- Add more headers if needed -->
-  </tr>
-  <tr th:each="student : ${students}">
-    <td th:text="${student.id}"></td>
-    <td th:text="${student.name}"></td>
-    <td th:text="${student.university.name}"></td>
-    <!-- Add more columns if needed -->
-  </tr>
-</table>
+<h1>Student List</h1>
+<ul>
+  <th:block th:each="student : ${students}">
+    <li>
+      <a th:href="@{'/students/get/' + ${student.id}}">[[${student.name}]]</a>
+      <!-- Add more details or links as needed -->
+    </li>
+  </th:block>
+</ul>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Students List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>List of Students</h1>-->
+<!--<table>-->
+<!--  <tr>-->
+<!--    <th>ID</th>-->
+<!--    <th>Name</th>-->
+<!--    <th>University</th>-->
+<!--    &lt;!&ndash; Add more headers if needed &ndash;&gt;-->
+<!--  </tr>-->
+<!--  <tr th:each="student : ${students}">-->
+<!--    <td th:text="${student.id}"></td>-->
+<!--    <td th:text="${student.name}"></td>-->
+<!--    <td th:text="${student.university.name}"></td>-->
+<!--    &lt;!&ndash; Add more columns if needed &ndash;&gt;-->
+<!--  </tr>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
