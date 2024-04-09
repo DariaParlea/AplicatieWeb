@@ -29,8 +29,23 @@ public class Student {
         this.degree = degree;
     }
 
+    public Student(Long id, String name, String degree, University university) {
+        this.id = id;
+        this.name = name;
+        this.degree = degree;
+        this.university = university;
+    }
+
     public Student(){
 
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
     }
 
     public Long getId() {

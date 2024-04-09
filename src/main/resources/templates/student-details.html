@@ -10,13 +10,22 @@
   <p><strong>ID:</strong> <span th:text="${student.id}"></span></p>
   <p><strong>Name:</strong> <span th:text="${student.name}"></span></p>
   <p><strong>University:</strong> <span th:text="${student.university.name}"></span></p>
-  <p><strong>Certificates:</strong></p>
-  <ul>
-    <li th:each="certificate : ${student.certificates}">
-      <span th:text="${certificate.title}"></span> - <span th:text="${certificate.issuanceDate}"></span>
-      <!-- Add more certificate details here if needed -->
-    </li>
-  </ul>
+
+  <!-- Check if the student has certificates -->
+  <div th:if="${student.certificates != null and not #lists.isEmpty(student.certificates)}">
+    <p><strong>Certificates:</strong></p>
+    <ul>
+      <!-- Iterate over each certificate -->
+      <li th:each="certificate : ${student.certificates}">
+        <!-- Display only the title of the certificate -->
+        <span th:text="${certificate.title}"></span>
+      </li>
+    </ul>
+  </div>
+  <!-- Display message when there are no certificates -->
+  <div th:if="${student.certificates == null or #lists.isEmpty(student.certificates)}">
+    <p>No certificates available for this student.</p>
+  </div>
 </div>
 <div th:unless="${student}">
   <p>Student not found.</p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Students Main Page</title>
@@ -39,17 +39,16 @@
       padding: 20px;
     }
   </style>
-
 </head>
 <body>
 <div class="sidebar">
   <h2>Students Options</h2>
   <ul>
+    <li><a href="#" id="findStudentByIdButton" data-toggle="modal" data-target="#studentIdModal">Find Student by ID</a></li>
+    <li><a href="#" id="findStudentByNameButton" data-toggle="modal" data-target="#studentNameModal">Find Student by Name</a></li>
     <li><a th:href="@{/students/create}">Create Student</a></li>
     <li><a th:href="@{/students/list}">Get All Students</a></li>
-    <li><a th:href="@{/students/get}">Find Student by ID</a></li>
-    <li><a th:href="@{/students/search}">Find Student by Name</a></li>
-    <li><a th:href="@{/students/delete}">Delete Student</a></li>
+    <li><a href="#" id="deleteStudentButton" data-toggle="modal" data-target="#deleteStudentModal">Delete Student</a></li>
     <li><a th:href="@{/}">Go to Homepage</a></li>
   </ul>
 </div>
@@ -58,5 +57,301 @@
   <h1>Welcome to the Students Main Page</h1>
   <p>Choose an option from the sidebar to perform actions on students.</p>
 </div>
+
+<!-- Modal for finding student by ID -->
+<div class="modal fade" id="studentIdModal" tabindex="-1" role="dialog" aria-labelledby="studentIdModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentIdModalLabel">Find Student by ID</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="studentIdForm">
+          <div class="form-group">
+            <label for="studentIdInput">Enter Student ID:</label>
+            <input type="text" class="form-control" id="studentIdInput" name="id">
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for finding student by Name -->
+<div class="modal fade" id="studentNameModal" tabindex="-1" role="dialog" aria-labelledby="studentNameModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentNameModalLabel">Find Student by Name</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="studentNameForm">
+          <div class="form-group">
+            <label for="studentNameInput">Enter Student Name:</label>
+            <input type="text" class="form-control" id="studentNameInput" name="name">
+          </div>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="deleteStudentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteStudentModalLabel">Delete Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="deleteStudentForm">
+          <div class="form-group">
+            <label for="deleteStudentIdInput">Enter Student ID:</label>
+            <input type="text" class="form-control" id="deleteStudentIdInput" name="id">
+          </div>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (place at the end of the body) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Handle form submission for finding student by ID
+  document.getElementById('studentIdForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    var studentId = document.getElementById('studentIdInput').value;
+    window.location.href = '/students/get/' + studentId; // Redirect to the appropriate URL
+  });
+
+  // Handle form submission for finding student by Name
+  document.getElementById('studentNameForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    var studentName = document.getElementById('studentNameInput').value;
+    window.location.href = '/students/search/' + studentName;
+    // You can perform an AJAX request to search for the student by name here
+  });
+
+  // Handle form submission for deleting student
+  document.getElementById('deleteStudentForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    var studentId = document.getElementById('deleteStudentIdInput').value;
+    window.location.href = '/students/delete/' + studentId;
+  });
+</script>
 </body>
 </html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Students Main Page</title>-->
+<!--  &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+<!--  <style>-->
+<!--    /* Custom styles */-->
+<!--    body {-->
+<!--      margin: 0;-->
+<!--      padding: 0;-->
+<!--      font-family: Arial, sans-serif;-->
+<!--      background-image: url("/students_main_bg.jpg"); /* Set the background image */-->
+<!--      background-size: cover; /* Cover the entire background */-->
+<!--      background-repeat: no-repeat; /* Do not repeat the background image */-->
+<!--      background-attachment: fixed; /* Fixed background image */-->
+<!--    }-->
+<!--    .sidebar {-->
+<!--      height: 100%;-->
+<!--      width: 250px; /* Set the width of the sidebar */-->
+<!--      position: fixed;-->
+<!--      z-index: 1;-->
+<!--      top: 0;-->
+<!--      left: 0;-->
+<!--      background-color: #f8f9fa; /* Sidebar background color */-->
+<!--      padding-top: 20px;-->
+<!--    }-->
+<!--    .sidebar a {-->
+<!--      padding: 10px;-->
+<!--      text-decoration: none;-->
+<!--      display: block;-->
+<!--    }-->
+<!--    .sidebar a:hover {-->
+<!--      background-color: #e9ecef; /* Sidebar link hover color */-->
+<!--    }-->
+<!--    .content {-->
+<!--      margin-left: 250px; /* Adjust content margin to accommodate sidebar */-->
+<!--      padding: 20px;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="sidebar">-->
+<!--  <h2>Students Options</h2>-->
+<!--  <ul>-->
+<!--    <li><a href="#" id="findStudentByIdButton" data-toggle="modal" data-target="#studentIdModal">Find Student by ID</a></li>-->
+<!--    <li><a href="#" id="findStudentByNameButton" data-toggle="modal" data-target="#studentNameModal">Find Student by Name</a></li>-->
+<!--    <li><a th:href="@{/students/create}">Create Student</a></li>-->
+<!--    <li><a th:href="@{/students/list}">Get All Students</a></li>-->
+<!--    <li><a th:href="@{/students/delete}">Delete Student</a></li>-->
+<!--    <li><a th:href="@{/}">Go to Homepage</a></li>-->
+<!--  </ul>-->
+<!--</div>-->
+<!--<div class="content">-->
+<!--  &lt;!&ndash; Your main content goes here &ndash;&gt;-->
+<!--  <h1>Welcome to the Students Main Page</h1>-->
+<!--  <p>Choose an option from the sidebar to perform actions on students.</p>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal for finding student by ID &ndash;&gt;-->
+<!--<div class="modal fade" id="studentIdModal" tabindex="-1" role="dialog" aria-labelledby="studentIdModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="studentIdModalLabel">Find Student by ID</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <form id="studentIdForm">-->
+<!--          <div class="form-group">-->
+<!--            <label for="studentIdInput">Enter Student ID:</label>-->
+<!--            <input type="text" class="form-control" id="studentIdInput" name="id">-->
+<!--          </div>-->
+<!--          <button type="submit" class="btn btn-primary">Search</button>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal for finding student by Name &ndash;&gt;-->
+<!--<div class="modal fade" id="studentNameModal" tabindex="-1" role="dialog" aria-labelledby="studentNameModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="studentNameModalLabel">Find Student by Name</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <form id="studentNameForm">-->
+<!--          <div class="form-group">-->
+<!--            <label for="studentNameInput">Enter Student Name:</label>-->
+<!--            <input type="text" class="form-control" id="studentNameInput" name="name">-->
+<!--          </div>-->
+<!--          <button type="submit" class="btn btn-primary">Search</button>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Bootstrap JS (place at the end of the body) &ndash;&gt;-->
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+
+<!--<script>-->
+<!--  // Handle form submission for finding student by ID-->
+<!--  document.getElementById('studentIdForm').addEventListener('submit', function(event) {-->
+<!--    event.preventDefault(); // Prevent form submission-->
+<!--    var studentId = document.getElementById('studentIdInput').value;-->
+<!--    window.location.href = '/students/get/' + studentId; // Redirect to the appropriate URL-->
+<!--  });-->
+
+<!--  // Handle form submission for finding student by Name-->
+<!--  document.getElementById('studentNameForm').addEventListener('submit', function(event) {-->
+<!--    event.preventDefault(); // Prevent form submission-->
+<!--    var studentName = document.getElementById('studentNameInput').value;-->
+<!--    window.location.href = '/students/search/' + studentName;-->
+<!--    // You can perform an AJAX request to search for the student by name here-->
+<!--  });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Students Main Page</title>-->
+<!--  &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+<!--  <style>-->
+<!--    /* Custom styles */-->
+<!--    body {-->
+<!--      margin: 0;-->
+<!--      padding: 0;-->
+<!--      font-family: Arial, sans-serif;-->
+<!--      background-image: url("/students_main_bg.jpg"); /* Set the background image */-->
+<!--      background-size: cover; /* Cover the entire background */-->
+<!--      background-repeat: no-repeat; /* Do not repeat the background image */-->
+<!--      background-attachment: fixed; /* Fixed background image */-->
+<!--    }-->
+<!--    .sidebar {-->
+<!--      height: 100%;-->
+<!--      width: 250px; /* Set the width of the sidebar */-->
+<!--      position: fixed;-->
+<!--      z-index: 1;-->
+<!--      top: 0;-->
+<!--      left: 0;-->
+<!--      background-color: #f8f9fa; /* Sidebar background color */-->
+<!--      padding-top: 20px;-->
+<!--    }-->
+<!--    .sidebar a {-->
+<!--      padding: 10px;-->
+<!--      text-decoration: none;-->
+<!--      display: block;-->
+<!--    }-->
+<!--    .sidebar a:hover {-->
+<!--      background-color: #e9ecef; /* Sidebar link hover color */-->
+<!--    }-->
+<!--    .content {-->
+<!--      margin-left: 250px; /* Adjust content margin to accommodate sidebar */-->
+<!--      padding: 20px;-->
+<!--    }-->
+<!--  </style>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<div class="sidebar">-->
+<!--  <h2>Students Options</h2>-->
+<!--  <ul>-->
+<!--    <li><a th:href="@{/students/create}">Create Student</a></li>-->
+<!--    <li><a th:href="@{/students/list}">Get All Students</a></li>-->
+<!--    <li><a th:href="@{/students/get}">Find Student by ID</a></li>-->
+<!--    <li><a th:href="@{/students/search}">Find Student by Name</a></li>-->
+<!--    <li><a th:href="@{/students/delete}">Delete Student</a></li>-->
+<!--    <li><a th:href="@{/}">Go to Homepage</a></li>-->
+<!--  </ul>-->
+<!--</div>-->
+<!--<div class="content">-->
+<!--  &lt;!&ndash; Your main content goes here &ndash;&gt;-->
+<!--  <h1>Welcome to the Students Main Page</h1>-->
+<!--  <p>Choose an option from the sidebar to perform actions on students.</p>-->
+<!--  <form action="/students/get" method="get">-->
+<!--    <label for="studentId">Enter Student ID:</label>-->
+<!--    <input type="text" id="studentId" name="id">-->
+<!--    <button type="submit">Search</button>-->
+<!--  </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

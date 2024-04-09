@@ -25,6 +25,11 @@ public class UniversityService {
         return universityRepository.findById(id).orElse(null);
     }
 
+    public University findUniversityByName(String name) {
+        return universityRepository.findByName(name);
+    }
+
+
     public List<University> getAllUniversities() {
         return (List<University>) universityRepository.findAll();
     }
@@ -36,4 +41,5 @@ public class UniversityService {
         }
         return false;
     }
+
 }

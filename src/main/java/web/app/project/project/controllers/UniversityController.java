@@ -18,6 +18,11 @@ public class UniversityController {
         this.universityService = universityService;
     }
 
+    @GetMapping("/main")
+    public String showMainPage() {
+        return "universities-main"; // Render students-main.html template
+    }
+
     @GetMapping("/create")
     public String showCreateUniversityForm(Model model) {
         model.addAttribute("university", new University());
@@ -27,7 +32,7 @@ public class UniversityController {
     @PostMapping("/create")
     public String createUniversity(@ModelAttribute University university) {
         universityService.saveUniversity(university);
-        return "redirect:/universities";
+        return "redirect:/university-list";
     }
 
     @GetMapping("/details/{id}")
@@ -48,7 +53,52 @@ public class UniversityController {
         return "university-list"; // Assuming you have a Thymeleaf template named university-list.html
     }
 
-    @DeleteMapping("/delete/{id}")
+    @GetMapping("/get/{id}")
+    public String getUniversityById(@PathVariable Long id, Model model) {
+        University university = universityService.findUniversityById(id);
+        if (university != null) {
+            model.addAttribute("university", university);
+            return "university-details"; // Render university-details.html template
+        } else {
+            return "not-found"; // Render not-found.html template or any other appropriate error page
+        }
+    }
+
+    @GetMapping("/get")
+    public String getUniversityById1(@RequestParam Long id, Model model) {
+        University university = universityService.findUniversityById(id);
+        if (university != null) {
+            model.addAttribute("university", university);
+            return "university-details"; // Render university-details.html template
+        } else {
+            return "not-found"; // Render not-found.html template or any other appropriate error page
+        }
+    }
+
+    @GetMapping("/search")
+    public String findUniversityByName(@RequestParam String name, Model model) {
+        University university = universityService.findUniversityByName(name);
+        if (university != null) {
+            model.addAttribute("university", university);
+            return "university-details"; // Render university-details.html template
+        } else {
+            return "not-found"; // Render not-found.html template or any other appropriate error page
+        }
+    }
+
+    @GetMapping("/search/{name}")
+    public String findUniversityByName1(@PathVariable String name, Model model) {
+        University university = universityService.findUniversityByName(name);
+        if (university != null) {
+            model.addAttribute("university", university);
+            return "university-details"; // Render university-details.html template
+        } else {
+            return "not-found"; // Render not-found.html template or any other appropriate error page
+        }
+    }
+
+
+    @GetMapping("/delete/{id}")
     public String deleteUniversity(@PathVariable Long id) {
         boolean deleted = universityService.deleteUniversityById(id);
         if (deleted) {
@@ -57,10 +107,14 @@ public class UniversityController {
             return "not-found"; // Or any other appropriate error page
         }
     }
-    @GetMapping("/list")
-    public String showAllUniversities(Model model) {
-        List<University> universities = universityService.getAllUniversities();
-        model.addAttribute("universities", universities);
-        return "universities"; // The name of the Thymeleaf template (universities.html)
+
+    @GetMapping("/delete")
+    public String deleteUniversity1(@RequestParam Long id) {
+        boolean deleted = universityService.deleteUniversityById(id);
+        if (deleted) {
+            return "redirect:/universities/all"; // Redirect to the list of universities
+        } else {
+            return "not-found"; // Or any other appropriate error page
+        }
     }
 }
