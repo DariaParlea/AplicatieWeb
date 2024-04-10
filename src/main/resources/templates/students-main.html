@@ -23,39 +23,83 @@
       z-index: 1;
       top: 0;
       left: 0;
-      background-color: #f8f9fa; /* Sidebar background color */
+      background-color: #343a40; /* Sidebar background color */
       padding-top: 20px;
     }
     .sidebar a {
+      display: block;
       padding: 10px;
       text-decoration: none;
-      display: block;
+      color: #ffffff; /* Set default text color to white */
     }
+
     .sidebar a:hover {
-      background-color: #e9ecef; /* Sidebar link hover color */
+      color: #cccccc; /* Change text color to gray on hover */
     }
     .content {
       margin-left: 250px; /* Adjust content margin to accommodate sidebar */
       padding: 20px;
     }
+    .btn-custom {
+      background-color: transparent;
+      border: none;
+      color: #ffffff;
+      padding: 10px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .btn-custom:hover,
+    .btn-custom:active,
+    .btn-custom:focus {
+      background-color: transparent !important;
+      color: #ffffff !important;
+      box-shadow: none !important;
+    }
+
+    .text-box {
+      background-color: rgba(188, 143, 143, 0.9); /* Use the RGBA color value with desired opacity */
+      padding: 20px; /* Add padding for spacing inside the box */
+      border-radius: 10px; /* Add rounded corners to the box */
+      width: 80%; /* Adjust the width of the text box */
+      max-width: 600px; /* Set a maximum width to prevent it from becoming too wide */
+      margin: 0 auto; /* Center the box horizontally */
+      margin-bottom: 20px; /* Add some bottom margin for spacing */
+    }
   </style>
 </head>
 <body>
-<div class="sidebar">
-  <h2>Students Options</h2>
-  <ul>
-    <li><a href="#" id="findStudentByIdButton" data-toggle="modal" data-target="#studentIdModal">Find Student by ID</a></li>
-    <li><a href="#" id="findStudentByNameButton" data-toggle="modal" data-target="#studentNameModal">Find Student by Name</a></li>
-    <li><a th:href="@{/students/create}">Create Student</a></li>
-    <li><a th:href="@{/students/list}">Get All Students</a></li>
-    <li><a href="#" id="deleteStudentButton" data-toggle="modal" data-target="#deleteStudentModal">Delete Student</a></li>
-    <li><a th:href="@{/}">Go to Homepage</a></li>
-  </ul>
+<div class="sidebar" style="text-align: center;">
+  <h2 style="text-align: center; color: #cccccc;">Students Menu</h2>
+  <a href="#" id="findStudentByIdButton" data-toggle="modal" data-target="#studentIdModal">Search by ID</a>
+  <a href="#" id="findStudentByNameButton" data-toggle="modal" data-target="#studentNameModal">Search by Name</a>
+  <button class="btn btn-info btn-custom" onclick="getAllStudents()">See All Students</button>
+  <button class="btn btn-primary btn-custom" onclick="createStudent()">Register Student</button>
+  <a href="#" id="deleteStudentButton" data-toggle="modal" data-target="#deleteStudentModal">Delete Student</a>
+  <button class="btn btn-secondary btn-custom" onclick="goToHomepage()">Go to Homepage</button>
 </div>
 <div class="content">
   <!-- Your main content goes here -->
-  <h1>Welcome to the Students Main Page</h1>
-  <p>Choose an option from the sidebar to perform actions on students.</p>
+  <div class="text-box">
+    <h1>Welcome to the Student Hub</h1>
+    <p>Here you can see all the informations about the students that registered themselves on this site and detailes about them.</p>
+  </div>
+  <div class="text-box">
+    <h1>Search</h1>
+    <p>We have two options for you to find students on our site, by ID or by name. By doing this you will see all the informations about the student.</p>
+  </div>
+  <div class="text-box">
+    <h1>See all students</h1>
+    <p>You have the option to see a list of all the students that are registered on our site.</p>
+  </div>
+  <div class="text-box">
+    <h1>Register</h1>
+    <p>If you are a new user and want to be part of our comunity you can easily register.</p>
+  </div>
+  <div class="text-box">
+    <h1>Delete</h1>
+    <p>If you consider that we are no longer an interest for you, you can simply delete your data by using your id.</p>
+  </div>
 </div>
 
 <!-- Modal for finding student by ID -->
@@ -153,9 +197,28 @@
     var studentId = document.getElementById('deleteStudentIdInput').value;
     window.location.href = '/students/delete/' + studentId;
   });
+  // Function to handle clicking "Get All Students" button
+  function getAllStudents() {
+    console.log('Getting all students...');
+    window.location.href = '/students/list';
+  }
+
+  // Function to handle clicking "Create Student" button
+  function createStudent() {
+    console.log('Creating a student...');
+    window.location.href = '/students/create';
+  }
+
+  // Function to handle clicking "Go to Homepage" button
+  function goToHomepage() {
+    console.log('Going to homepage...');
+    window.location.href = '/';
+  }
 </script>
 </body>
 </html>
+
+
 
 
 <!--<!DOCTYPE html>-->
