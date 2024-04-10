@@ -3,10 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <title>University Details</title>
+  <style>
+    body {
+      background-image: url("/university_details_bg.jpg"); /* Replace 'background_image.jpg' with your background image path */
+      background-size: cover; /* Cover the entire background */
+      background-repeat: no-repeat; /* Do not repeat the background image */
+      color: #ffffff; /* Text color */
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .details-box {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c2c2c;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    .back-button {
+      background-color: #2c2c2c; /* Dark gray background color for the button */
+      color: #ffffff; /* Button text color */
+      border: none;
+      padding: 10px 20px; /* Add padding to the button */
+      border-radius: 5px; /* Add rounded corners */
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .back-button:hover {
+      background-color: #424242;
+    }/* Darker background color on hover */
+  </style>
 </head>
 <body>
 <h1>University Details</h1>
-<div th:if="${university}">
+<button class="back-button" onclick="goBack()">Back</button>
+<div class="details-box" th:if="${university}">
   <p><strong>ID:</strong> <span th:text="${university.id}"></span></p>
   <p><strong>Name:</strong> <span th:text="${university.name}"></span></p>
   <p><strong>Location:</strong> <span th:text="${university.location}"></span></p>
@@ -15,5 +62,10 @@
 <div th:unless="${university}">
   <p>University not found.</p>
 </div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
 </body>
 </html>

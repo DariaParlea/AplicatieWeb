@@ -11,7 +11,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url("/university_bg.jpg"); /* Set the background image */
+      background-image: url("/students_main_bg.jpg"); /* Set the background image */
       background-size: cover; /* Cover the entire background */
       background-repeat: no-repeat; /* Do not repeat the background image */
       background-attachment: fixed; /* Fixed background image */
@@ -23,39 +23,67 @@
       z-index: 1;
       top: 0;
       left: 0;
-      background-color: #f8f9fa; /* Sidebar background color */
+      background-color: #343a40; /* Sidebar background color */
       padding-top: 20px;
+      list-style-type: none; /* Remove bullet points */
     }
     .sidebar a {
+      display: block;
       padding: 10px;
       text-decoration: none;
-      display: block;
+      color: #ffffff; /* Set default text color to white */
     }
+
     .sidebar a:hover {
-      background-color: #e9ecef; /* Sidebar link hover color */
+      color: #cccccc; /* Change text color to gray on hover */
     }
     .content {
       margin-left: 250px; /* Adjust content margin to accommodate sidebar */
       padding: 20px;
     }
+
+    .text-box {
+      background-color: rgba(188, 143, 143, 0.9); /* Use the RGBA color value with desired opacity */
+      padding: 20px; /* Add padding for spacing inside the box */
+      border-radius: 10px; /* Add rounded corners to the box */
+      width: 80%; /* Adjust the width of the text box */
+      max-width: 600px; /* Set a maximum width to prevent it from becoming too wide */
+      margin: 0 auto; /* Center the box horizontally */
+      margin-bottom: 20px; /* Add some bottom margin for spacing */
+    }
   </style>
 </head>
 <body>
-<div class="sidebar">
-  <h2>Universities Options</h2>
-  <ul>
+<div class="sidebar" style="text-align: center;">
+  <h2 style="text-align: center; color: #cccccc;">Universities Options</h2>
     <li><a href="#" id="findUniversityByIdButton" data-toggle="modal" data-target="#universityIdModal">Find University by ID</a></li>
     <li><a href="#" id="findUniversityByNameButton" data-toggle="modal" data-target="#universityNameModal">Find University by Name</a></li>
     <li><a th:href="@{/universities/create}">Create University</a></li>
     <li><a th:href="@{/universities/all}">Get All Universities</a></li>
     <li><a href="#" id="deleteUniversityButton" data-toggle="modal" data-target="#deleteUniversityModal">Delete University</a></li>
     <li><a th:href="@{/}">Go to Homepage</a></li>
-  </ul>
 </div>
 <div class="content">
-  <!-- Your main content goes here -->
-  <h1>Welcome to the Universities Main Page</h1>
-  <p>Choose an option from the sidebar to perform actions on universities.</p>
+  <div class="text-box">
+    <h1>Welcome to the University Hub</h1>
+    <p>Here you can see all the informations about the universities that are registered on this site and detailes about them.</p>
+  </div>
+  <div class="text-box">
+    <h1>Search</h1>
+    <p>We have two options for you to find universities on our site, by ID. By doing this you will see all the informations about the university.</p>
+  </div>
+  <div class="text-box">
+    <h1>See all universities</h1>
+    <p>You have the option to see a list of all the universities that are registered on our site.</p>
+  </div>
+  <div class="text-box">
+    <h1>Register</h1>
+    <p>If you do not find your desired university here, we welcome you to register it to our site.</p>
+  </div>
+  <div class="text-box">
+    <h1>Delete</h1>
+    <p>If we are no longer an interest for the university, you can simply delete the universities data by using the university id.</p>
+  </div>
 </div>
 
 <!-- Modal for finding university by ID -->
