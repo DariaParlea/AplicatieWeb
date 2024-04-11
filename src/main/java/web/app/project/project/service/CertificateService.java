@@ -280,12 +280,13 @@ public class CertificateService {
 
             //ASTEA SA LE DECOMENTEZ DUPA CE MA ASIGUR CA MERGE BINE CA SA MI SE SALVEZE CERTIFICATELE IN BAZA DE DATE!!!!!!!
 
-//            Certificate certificate = new Certificate();
-//            certificate.setStudent(student);
-//            certificate.setUniversity(university);
-//            certificate.setIssuanceDate(new Date());
-//
-//            certificateRepository.save(certificate);
+            Certificate certificate = new Certificate();
+            certificate.setStudent(student);
+            certificate.setUniversity(university);
+            certificate.setIssuanceDate(new Date());
+            certificate.setTitle(title);
+
+            certificateRepository.save(certificate);
 
             return byteArrayOutputStream.toByteArray();
         } catch (IOException e) {

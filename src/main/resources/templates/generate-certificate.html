@@ -1,26 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Generate Certificate</title>
+  <style>
+    body {
+      background-image: url("/certificate_page.jpg"); /* Replace 'background_image.jpg' with your background image path */
+      background-size: cover; /* Cover the entire background */
+      background-repeat: no-repeat; /* Do not repeat the background image */
+      color: #ffffff; /* Text color */
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .details-box {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 20px;
+      text-align: center;
+      max-width: 500px;
+      margin: 50px auto; /* Center the box horizontally */
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box; /* Include padding and border in element's total width and height */
+    }
+
+    button[type="submit"],
+    .back-button {
+      background-color: #2c2c2c; /* Dark gray background color for the button */
+      color: #ffffff; /* Button text color */
+      border: none;
+      padding: 10px 20px; /* Add padding to the button */
+      border-radius: 5px; /* Add rounded corners */
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    button[type="submit"]:hover,
+    .back-button:hover {
+      background-color: #424242; /* Darker background color on hover */
+    }
+  </style>
 </head>
 <body>
 <h1>Generate Certificate</h1>
-<form th:action="@{/certificates/generate}" method="post">
-  <label for="student">Select Student:</label>
-  <select id="student" name="studentId">
-    <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}">Student Name</option>
-  </select>
+<button class="back-button" onclick="goBack()">Back</button>
+<div class="details-box">
+  <form action="/certificates/generate" method="post">
+    <label for="student">Select Student:</label>
+    <select id="student" name="studentId">
+      <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.name}">Student Name</option>
+    </select>
 
-  <label for="university">Select University:</label>
-  <select id="university" name="universityId">
-    <option th:each="university : ${universities}" th:value="${university.id}" th:text="${university.name}">University Name</option>
-  </select>
+    <label for="university">Select University:</label>
+    <select id="university" name="universityId">
+      <option th:each="university : ${universities}" th:value="${university.id}" th:text="${university.name}">University Name</option>
+    </select>
 
-  <label for="title">Certificate Title:</label>
-  <input type="text" id="title" name="title" placeholder="Enter Certificate Title" required>
+    <label for="title">Certificate Title:</label>
+    <input type="text" id="title" name="title" placeholder="Enter Certificate Title" required>
 
-  <button type="submit">Generate Certificate</button>
-</form>
+    <button type="submit">Generate Certificate</button>
+  </form>
+</div>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
 </body>
 </html>

@@ -17,7 +17,8 @@
       background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
       padding: 20px;
       border-radius: 10px;
-      margin-top: 20px;
+      margin: 50px auto; /* Center the box horizontally */
+      max-width: 500px; /* Limit width of the box */
       font-size: 20px;
       text-align: center;
     }
@@ -26,14 +27,24 @@
       text-align: center;
     }
 
-    p {
+    label {
+      display: block;
       margin-bottom: 10px;
+      color: #ffffff; /* Text color for labels */
     }
 
-    strong {
-      font-weight: bold;
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box; /* Include padding and border in element's total width and height */
+      background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+      color: #000000; /* Text color for input fields */
     }
 
+    button[type="submit"],
     .back-button {
       background-color: #2c2c2c; /* Dark gray background color for the button */
       color: #ffffff; /* Button text color */
@@ -44,9 +55,10 @@
       transition: background-color 0.3s ease; /* Smooth transition on hover */
     }
 
+    button[type="submit"]:hover,
     .back-button:hover {
-      background-color: #424242;
-    }/* Darker background color on hover */
+      background-color: #424242; /* Darker background color on hover */
+    }
   </style>
 </head>
 <body>
@@ -54,12 +66,10 @@
 <button class="back-button" onclick="goBack()">Back</button>
 <div class="details-box">
   <form th:action="@{/universities/create}" th:object="${university}" method="post">
-    <label>Name:</label>
-    <input type="text" th:field="*{name}" required>
-    <br>
-    <label>Location:</label>
-    <input type="text" th:field="*{location}" required>
-    <br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required>
+    <label for="location">Location:</label>
+    <input type="text" id="location" th:field="*{location}" required>
     <button type="submit">Submit</button>
   </form>
 </div>
