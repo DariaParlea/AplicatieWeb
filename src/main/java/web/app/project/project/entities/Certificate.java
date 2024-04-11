@@ -1,7 +1,6 @@
 package web.app.project.project.entities;
 import java.util.Date;
 import jakarta.persistence.*;
-//import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
@@ -25,8 +24,6 @@ public class Certificate {
     @Temporal(TemporalType.DATE)
     private Date issuanceDate;
 
-    @Lob
-    private byte[] pdf; // Byte array to store the PDF document
 
 
     public Certificate(Long id, String title, Student student, University university, Date issuanceDate) {
@@ -91,7 +88,4 @@ public class Certificate {
                 '}';
     }
 
-    public void setPdf(byte[] pdf) {
-        this.pdf = pdf;
-    }
 }

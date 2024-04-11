@@ -58,8 +58,8 @@
   <h2 style="text-align: center; color: #cccccc;">Universities Options</h2>
     <li><a href="#" id="findUniversityByIdButton" data-toggle="modal" data-target="#universityIdModal">Find University by ID</a></li>
     <li><a href="#" id="findUniversityByNameButton" data-toggle="modal" data-target="#universityNameModal">Find University by Name</a></li>
-    <li><a th:href="@{/universities/create}">Create University</a></li>
-    <li><a th:href="@{/universities/all}">Get All Universities</a></li>
+    <li><a th:href="@{/universities/create}">Register University</a></li>
+    <li><a th:href="@{/universities/all}">See all Universities</a></li>
     <li><a href="#" id="deleteUniversityButton" data-toggle="modal" data-target="#deleteUniversityModal">Delete University</a></li>
     <li><a th:href="@{/}">Go to Homepage</a></li>
 </div>
@@ -89,7 +89,7 @@
 <!-- Modal for finding university by ID -->
 <div class="modal fade" id="universityIdModal" tabindex="-1" role="dialog" aria-labelledby="universityIdModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="background-color: #B0C4DE;">
       <div class="modal-header">
         <h5 class="modal-title" id="universityIdModalLabel">Find University by ID</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -102,7 +102,7 @@
             <label for="universityIdInput">Enter University ID:</label>
             <input type="text" class="form-control" id="universityIdInput" name="id">
           </div>
-          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="submit" class="btn btn-dark">Search</button>
         </form>
       </div>
     </div>
@@ -112,7 +112,7 @@
 <!-- Modal for finding university by Name -->
 <div class="modal fade" id="universityNameModal" tabindex="-1" role="dialog" aria-labelledby="universityNameModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="background-color: #B0C4DE;">
       <div class="modal-header">
         <h5 class="modal-title" id="universityNameModalLabel">Find University by Name</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -125,7 +125,7 @@
             <label for="universityNameInput">Enter University Name:</label>
             <input type="text" class="form-control" id="universityNameInput" name="name">
           </div>
-          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="submit" class="btn btn-dark">Search</button>
         </form>
       </div>
     </div>
@@ -134,7 +134,7 @@
 
 <div class="modal fade" id="deleteUniversityModal" tabindex="-1" role="dialog" aria-labelledby="deleteUniversityModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="background-color: #B0C4DE;">
       <div class="modal-header">
         <h5 class="modal-title" id="deleteUniversityModalLabel">Delete University</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -147,12 +147,13 @@
             <label for="deleteUniversityIdInput">Enter University ID:</label>
             <input type="text" class="form-control" id="deleteUniversityIdInput" name="id">
           </div>
-          <button type="submit" class="btn btn-danger">Delete</button>
+          <button type="submit" class="btn btn-dark">Delete</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- Bootstrap JS (place at the end of the body) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
