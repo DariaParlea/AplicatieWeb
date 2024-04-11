@@ -6,10 +6,10 @@
   <title>Student List</title>
   <style>
     body {
-      background-image: url("/student_list_bg.jpg"); /* Replace 'background.jpg' with your background image path */
-      background-size: cover; /* Cover the entire background */
-      background-repeat: no-repeat; /* Do not repeat the background image */
-      color: #ffffff; /* Text color */
+      background-image: url("/student_list_bg.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: #ffffff;
       font-family: Arial, sans-serif;
       padding: 20px;
     }
@@ -22,64 +22,63 @@
     ul {
       padding: 0;
       margin: 0;
-      list-style-type: none; /* Remove bullet points */
+      list-style-type: none;
     }
 
     .student-box {
       background-color: rgba(128, 0, 0, 0.3);
-      padding: 5px; /* Reduce padding to make the boxes smaller */
+      padding: 5px;
       border-radius: 5px;
       margin-bottom: 10px;
-      display: flex; /* Use flexbox to align items vertically */
-      align-items: center; /* Align items vertically */
+      display: flex;
+      align-items: center;
     }
 
     .student-box a {
       color: #ffffff;
       text-decoration: none;
-      margin: auto; /* Center align the names */
+      margin: auto;
     }
 
     .intro-box {
-      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 20px;
       border-radius: 10px;
       margin-bottom: 20px;
     }
 
     .intro-text {
-      font-size: 18px; /* Increase font size */
-      color: #ffffff; /* Change text color */
+      font-size: 18px;
+      color: #ffffff;
       text-align: center;
     }
 
     a {
-      color: #ffffff; /* Link color */
-      text-decoration: none; /* Remove default link underline */
+      color: #ffffff;
+      text-decoration: none;
     }
 
     a:hover {
-      color: #cccccc; /* Link color on hover */
+      color: #cccccc;
     }
 
     .back-button {
-      background-color: #2c2c2c; /* Dark gray background color for the button */
-      color: #ffffff; /* Button text color */
+      background-color: #2c2c2c;
+      color: #ffffff;
       border: none;
-      padding: 10px 20px; /* Add padding to the button */
-      border-radius: 5px; /* Add rounded corners */
+      padding: 10px 20px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease; /* Smooth transition on hover */
+      transition: background-color 0.3s ease;
     }
 
     .back-button:hover {
-      background-color: #424242; /* Darker background color on hover */
+      background-color: #424242;
     }
   </style>
 </head>
 <body>
 <h1>Student List</h1>
-<!-- Back button -->
 <button class="back-button" onclick="goBack()">Back</button>
 <div class="intro-box">
   <p class="intro-text">These are all the students that are registered on our site. For more information about a student please click on the name.</p>
@@ -88,12 +87,10 @@
   <th:block th:each="student : ${students}">
     <li class="student-box">
       <a th:href="@{'/students/get/' + ${student.id}}">[[${student.name}]]</a>
-      <!-- Add more details or links as needed -->
     </li>
   </th:block>
 </ul>
 
-<!-- JavaScript function to go back -->
 <script>
   function goBack() {
     window.history.back();
@@ -102,30 +99,3 @@
 
 </body>
 </html>
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <title>Students List</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>List of Students</h1>-->
-<!--<table>-->
-<!--  <tr>-->
-<!--    <th>ID</th>-->
-<!--    <th>Name</th>-->
-<!--    <th>University</th>-->
-<!--    &lt;!&ndash; Add more headers if needed &ndash;&gt;-->
-<!--  </tr>-->
-<!--  <tr th:each="student : ${students}">-->
-<!--    <td th:text="${student.id}"></td>-->
-<!--    <td th:text="${student.name}"></td>-->
-<!--    <td th:text="${student.university.name}"></td>-->
-<!--    &lt;!&ndash; Add more columns if needed &ndash;&gt;-->
-<!--  </tr>-->
-<!--</table>-->
-<!--</body>-->
-<!--</html>-->

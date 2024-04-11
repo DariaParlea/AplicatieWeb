@@ -1,5 +1,4 @@
 package web.app.project.project.service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.app.project.project.entities.University;
@@ -31,7 +30,7 @@ public class UniversityService {
 
 
     public List<University> getAllUniversities() {
-        return (List<University>) universityRepository.findAll();
+        return universityRepository.findAll();
     }
 
     public boolean deleteUniversityById(Long id) {

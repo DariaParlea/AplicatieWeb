@@ -1,7 +1,6 @@
 package web.app.project.project.entities;
 import java.util.List;
 import jakarta.persistence.*;
-//import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity

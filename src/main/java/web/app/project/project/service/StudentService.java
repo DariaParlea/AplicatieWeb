@@ -1,5 +1,4 @@
 package web.app.project.project.service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.app.project.project.entities.Student;
@@ -38,7 +37,7 @@ public class StudentService {
     }
 
     public List<Student> getAllStudents() {
-        return (List<Student>) studentRepository.findAll();
+        return studentRepository.findAll();
     }
 
 }

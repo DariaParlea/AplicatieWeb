@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.app.project.project.entities.University;
 import web.app.project.project.service.UniversityService;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
@@ -20,7 +19,7 @@ public class UniversityController {
 
     @GetMapping("/main")
     public String showMainPage() {
-        return "universities-main"; // Render students-main.html template
+        return "universities-main";
     }
 
     @GetMapping("/create")
@@ -50,7 +49,7 @@ public class UniversityController {
     public String getAllUniversities(Model model) {
         List<University> universities = universityService.getAllUniversities();
         model.addAttribute("universities", universities);
-        return "university-list"; // Assuming you have a Thymeleaf template named university-list.html
+        return "university-list";
     }
 
     @GetMapping("/get/{id}")
@@ -58,9 +57,9 @@ public class UniversityController {
         University university = universityService.findUniversityById(id);
         if (university != null) {
             model.addAttribute("university", university);
-            return "university-details"; // Render university-details.html template
+            return "university-details";
         } else {
-            return "not-found"; // Render not-found.html template or any other appropriate error page
+            return "not-found";
         }
     }
 
@@ -69,9 +68,9 @@ public class UniversityController {
         University university = universityService.findUniversityById(id);
         if (university != null) {
             model.addAttribute("university", university);
-            return "university-details"; // Render university-details.html template
+            return "university-details";
         } else {
-            return "not-found"; // Render not-found.html template or any other appropriate error page
+            return "not-found";
         }
     }
 
@@ -80,9 +79,9 @@ public class UniversityController {
         University university = universityService.findUniversityByName(name);
         if (university != null) {
             model.addAttribute("university", university);
-            return "university-details"; // Render university-details.html template
+            return "university-details";
         } else {
-            return "not-found"; // Render not-found.html template or any other appropriate error page
+            return "not-found";
         }
     }
 
@@ -91,9 +90,9 @@ public class UniversityController {
         University university = universityService.findUniversityByName(name);
         if (university != null) {
             model.addAttribute("university", university);
-            return "university-details"; // Render university-details.html template
+            return "university-details";
         } else {
-            return "not-found"; // Render not-found.html template or any other appropriate error page
+            return "not-found";
         }
     }
 
@@ -102,9 +101,9 @@ public class UniversityController {
     public String deleteUniversity(@PathVariable Long id) {
         boolean deleted = universityService.deleteUniversityById(id);
         if (deleted) {
-            return "redirect:/universities/all"; // Redirect to the list of universities
+            return "redirect:/universities/all";
         } else {
-            return "not-found"; // Or any other appropriate error page
+            return "not-found";
         }
     }
 
@@ -112,9 +111,9 @@ public class UniversityController {
     public String deleteUniversity1(@RequestParam Long id) {
         boolean deleted = universityService.deleteUniversityById(id);
         if (deleted) {
-            return "redirect:/universities/all"; // Redirect to the list of universities
+            return "redirect:/universities/all";
         } else {
-            return "not-found"; // Or any other appropriate error page
+            return "not-found";
         }
     }
 }

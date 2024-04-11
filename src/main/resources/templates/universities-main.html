@@ -3,53 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <title>Universities Main Page</title>
-  <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Custom styles */
     body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url("/students_main_bg.jpg"); /* Set the background image */
-      background-size: cover; /* Cover the entire background */
-      background-repeat: no-repeat; /* Do not repeat the background image */
-      background-attachment: fixed; /* Fixed background image */
+      background-image: url("/students_main_bg.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
     .sidebar {
       height: 100%;
-      width: 250px; /* Set the width of the sidebar */
+      width: 250px;
       position: fixed;
       z-index: 1;
       top: 0;
       left: 0;
-      background-color: #343a40; /* Sidebar background color */
+      background-color: #343a40;
       padding-top: 20px;
-      list-style-type: none; /* Remove bullet points */
+      list-style-type: none;
     }
     .sidebar a {
       display: block;
       padding: 10px;
       text-decoration: none;
-      color: #ffffff; /* Set default text color to white */
+      color: #ffffff;
     }
 
     .sidebar a:hover {
-      color: #cccccc; /* Change text color to gray on hover */
+      color: #cccccc;
     }
     .content {
-      margin-left: 250px; /* Adjust content margin to accommodate sidebar */
+      margin-left: 250px;
       padding: 20px;
     }
 
     .text-box {
-      background-color: rgba(188, 143, 143, 0.9); /* Use the RGBA color value with desired opacity */
-      padding: 20px; /* Add padding for spacing inside the box */
-      border-radius: 10px; /* Add rounded corners to the box */
-      width: 80%; /* Adjust the width of the text box */
-      max-width: 600px; /* Set a maximum width to prevent it from becoming too wide */
-      margin: 0 auto; /* Center the box horizontally */
-      margin-bottom: 20px; /* Add some bottom margin for spacing */
+      background-color: rgba(188, 143, 143, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      margin: 0 auto;
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -66,11 +64,11 @@
 <div class="content">
   <div class="text-box">
     <h1>Welcome to the University Hub</h1>
-    <p>Here you can see all the informations about the universities that are registered on this site and detailes about them.</p>
+    <p>Here you can see all the information about the universities that are registered on this site and details about them.</p>
   </div>
   <div class="text-box">
     <h1>Search</h1>
-    <p>We have two options for you to find universities on our site, by ID. By doing this you will see all the informations about the university.</p>
+    <p>We have two options for you to find universities on our site, by ID. By doing this you will see all the information about the university.</p>
   </div>
   <div class="text-box">
     <h1>See all universities</h1>
@@ -86,7 +84,7 @@
   </div>
 </div>
 
-<!-- Modal for finding university by ID -->
+
 <div class="modal fade" id="universityIdModal" tabindex="-1" role="dialog" aria-labelledby="universityIdModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background-color: #B0C4DE;">
@@ -109,7 +107,7 @@
   </div>
 </div>
 
-<!-- Modal for finding university by Name -->
+
 <div class="modal fade" id="universityNameModal" tabindex="-1" role="dialog" aria-labelledby="universityNameModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="background-color: #B0C4DE;">
@@ -155,30 +153,25 @@
 </div>
 
 
-<!-- Bootstrap JS (place at the end of the body) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-  // Handle form submission for finding university by ID
   document.getElementById('universityIdForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
     var universityId = document.getElementById('universityIdInput').value;
-    window.location.href = '/universities/details/' + universityId; // Redirect to the appropriate URL
+    window.location.href = '/universities/details/' + universityId;
   });
 
-  // Handle form submission for finding university by Name
   document.getElementById('universityNameForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
     var universityName = document.getElementById('universityNameInput').value;
     window.location.href = '/universities/search?name=' + universityName;
-    // You can perform an AJAX request to search for the university by name here
   });
 
-  // Handle form submission for deleting university
   document.getElementById('deleteUniversityForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
     var universityId = document.getElementById('deleteUniversityIdInput').value;
     window.location.href = '/universities/delete/' + universityId;
   });

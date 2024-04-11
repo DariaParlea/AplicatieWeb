@@ -15,10 +15,8 @@ public class CustomErrorHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception ex) {
-        // Log the exception
         logger.error("An error occurred: {}", ex.getMessage(), ex);
 
-        // Customize the error response
         String errorMessage = "An error occurred: " + ex.getMessage();
         return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
